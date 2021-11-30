@@ -70,12 +70,13 @@ export default class Cat {
    * When the cat is ignored, decrease it's health values.
    */
   public ignore = (): void => {
-    if (this.hunger >= 10 || this.energy < 0) {
+    if (this.hunger >= 10 || this.energy <= 0) {
       this.catDied();
+    } else {
+      this.energy -= (Math.random() > 0.7 ? 1 : 0);
+      this.mood -= (Math.random() > 0.4 ? 1 : 0);
+      this.hunger += (Math.random() > 0.2 ? 1 : 0);
     }
-    this.energy -= (Math.random() > 0.7 ? 1 : 0);
-    this.mood -= (Math.random() > 0.4 ? 1 : 0);
-    this.hunger += (Math.random() > 0.2 ? 1 : 0);
   };
 
   /**
